@@ -10,3 +10,11 @@ jobs:
               run: |
                 echo "This workflow is running on ${{ runner.os }}."
                 echo "The runner is located at ${{ runner.name }}."
+    
+    windows-echo:
+        runs-on: windows-latest
+        steps:
+            - name: Show OS
+              run: |
+                echo "This workflow is running on ${{ runner.os }}."
+                echo "The runner is located at ${{ runner.name }}."

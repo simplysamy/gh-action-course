@@ -15,6 +15,7 @@ jobs:
         runs-on: windows-latest
         steps:
             - name: Show OS
+              shell: bash
               run: |
                 echo "This workflow is running on ${{ runner.os }}."
                 echo "The runner is located at ${{ runner.name }}."

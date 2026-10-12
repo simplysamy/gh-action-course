@@ -18,6 +18,8 @@ jobs:
               uses: actions/setup-node@v4
               with:
                 node-version: '22.x'
+            - name: Upgrade npm
+              run: npm install -g npm@12
             - name: Install dependencies
             # run: |
             #    cd 04-actions/react-app

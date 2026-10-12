@@ -1,6 +1,8 @@
 name: 03-workflow-runner
 
-on: push
+on: 
+  push:
+  workflow_dispatch:
 
 jobs:
     ubuntu-echo:

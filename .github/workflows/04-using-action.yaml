@@ -7,6 +7,9 @@ on: push
 jobs:
     build: 
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: 04-actions/react-app
 
         # checkout the code from the repository
         # install dependencies for react app
@@ -21,9 +24,9 @@ jobs:
             - name: Upgrade npm
               run: npm install -g npm@12
             - name: Install dependencies
-            # run: |
-            #    cd 04-actions/react-app
-            #    npm ci
               run: npm ci
-              working-directory: 04-actions/react-app
+              
+            - name: Run tests
+              run: npm run test
+              
         

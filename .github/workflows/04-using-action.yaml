@@ -5,13 +5,21 @@ on: push
 jobs:
     build: 
         runs-on: ubuntu-latest
+
+        # checkout the code from the repository
+        # install dependencies for react app
+        # execute automated test
         steps:
             - name: Checkout code
               uses: actions/checkout@v7
-            - name: Print folders
-              run: ls -R
-        
-        # checkout the code from the repository
-        # install dependencies for react app
-        # execute automated tests
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                node-version: '22.x'
+            - name: Install dependencies
+            # run: |
+            #    cd 04-actions/react-app
+            #    npm ci
+              run: npm ci
+              working-directory: 04-actions/react-app
         

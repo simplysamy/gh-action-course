@@ -19,6 +19,6 @@ jobs:
                 echo "SHA: ${{ github.sha }}"
           - name: Display environment variables
             run: |
-              echo "Environment variables: ${{ vars. }}"
+              echo "Environment variables: ${{ vars.MY_VAR}}"
 
     

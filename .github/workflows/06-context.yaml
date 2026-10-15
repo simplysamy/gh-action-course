@@ -9,19 +9,33 @@ on:
           type: boolean
           default: false
 
+env:
+    MY_WORKFLOW_VAR: "workflow"
+    MY_OVERWRITTEN_VAR: "workflow"
+
 jobs:
-    build: 
-        runs-on: ubuntu-latest
-        steps:
-          - name: Display information
-            run: |
-                echo "Event name: ${{ github.event_name }}"
-                echo "Actor: ${{ github.actor }}"
-                echo "Workflow: ${{ github.workflow }}"
-                echo "Run ID: ${{ github.run_id }}"
-                echo "Run number: ${{ github.run_number }}"
-                echo "Ref: ${{ github.ref }}"
-                echo "SHA: ${{ github.sha }}"
-          - name: Display environment variables
-            run: |
-              echo "Environment variables: ${{ vars.MY_VAR}}"
+  echo_data:
+    runs-on: ubuntu-latest
+    env:
+      MY_JOB_VAR: "job"
+      MY_OVERWRITTEN_VAR: "job"
+
+    steps:
+        - name: Display information
+          run: |
+              echo "Event name: ${{ github.event_name }}"
+              echo "Actor: ${{ github.actor }}"
+              echo "Workflow: ${{ github.workflow }}"
+              echo "Run ID: ${{ github.run_id }}"
+              echo "Run number: ${{ github.run_number }}"
+              echo "Ref: ${{ github.ref }}"
+              echo "SHA: ${{ github.sha }}"
+        - name: Retrive varibale
+          run: |
+            echo "Variable values: ${{ vars.MY_VAR}}"
+        - name: Print Env variables
+          env: 
+            MY_OVERWRITTEN_VAR: "step"
+          run: |
+            echo "Workflow env: ${{ env.MY_WORKFLOW_VAR }}"
+            echo "Overwritten env: ${{ env.MY_OVERWRITTEN_VAR }}"
